@@ -22,6 +22,7 @@ clear
 printf "
 ${BORANGE}ENUMVOLCANO${NC}
 Author: Dion Mulaj
+Edits By: github.com/steveirwincyber
 
 Usage: Put this file in the AUTHORIZED target system and run it.
 Follow these steps:
@@ -35,7 +36,6 @@ printf "
 OPTIONS:                       
 
 ${BGREEN}0) FULL Enumeration${NC}
-${BRED}99) EXIT${NC}
 
 ${BBLUE}|/\/\/\/\/\/\PASSWORD ENUMERATION/\/\/\/\/\/\|${NC}
 
@@ -85,11 +85,11 @@ ${BORANGE}|/\/\/\/\/\/\DEFAULT ENUMERATION\/\/\/\/\/\|${NC}
 
 ${ORANGE}12) Privilege Escalation Default Enumeration${NC}
 "
+${BRED}99) EXIT${NC}
 
 echo "
 
-Please choose an option:
-"
+Please choose an option:"
 
 read input
 
@@ -119,7 +119,7 @@ then
 #Find last edited files
 elif [ $input = 3 ]
 then 
-	find / -mmin -10 2>/dev/null | grep -Ev "^/proc"
+	find / -mmin -10 2>/dev/null | grep -Ev "^/proc|^/sys" | more
 	
 	printf "
 	
@@ -190,7 +190,7 @@ then
 elif [ $input = 7.2 ]
 then 
 	ls -la /etc/crontab
-	
+	cat /etc/crontab | more
 	printf "
 	
 	${GREEN}Enumeration has finished!${NC}
@@ -233,7 +233,7 @@ then
 #Cron Jobs - Spool Cron	
 elif [ $input = 7.6 ]
 then 
-	ls -la /var/spool/cron
+	ls -laR /var/spool/cron
 	
 	printf "
 	
@@ -256,7 +256,7 @@ then
 elif [ $input = 7.8 ]
 then 
 	crontab -l
-	ls -alh /var/spool/cron;
+	ls -alhR /var/spool/cron;
 	ls -al /etc/ | grep cron
 	ls -al /etc/cron*
 	cat /etc/cron*
