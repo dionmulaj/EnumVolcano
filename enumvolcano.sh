@@ -158,7 +158,7 @@ elif [ $input = 6 ]
 then 
 	find / -name authorized_keys 2> /dev/null
 	find / -name id_rsa 2> /dev/null
-	
+
 	printf "
 	
 	${GREEN}Enumeration has finished!${NC}
@@ -276,12 +276,12 @@ elif [ $input = 8 ]
 then 
 	systemctl list-timers --all
 	
-#SUID Enumeration
+#SUID/SGID Enumeration
 elif [ $input = 9 ]
 then 
 	ls /usr/bin/sudo -alh
-	find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
-	find / -uid 0 -perm -4000 -type f 2>/dev/null
+	find / -perm -6000 -type f -exec ls -la {} 2>/dev/null \;
+	find / -uid 0 -perm -6000 -type f 2>/dev/null
 	
 	printf "
 	
@@ -412,13 +412,13 @@ then
 	
 	printf "
 	
-	${BORANGE}SUID Enum: ${NC}
+	${BORANGE}SUID/SGID Enum: ${NC}
 	
 	"
 	
 	ls /usr/bin/sudo -alh
-	find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
-	find / -uid 0 -perm -4000 -type f 2>/dev/null
+	find / -perm -6000 -type f -exec ls -la {} 2>/dev/null \;
+	find / -uid 0 -perm -6000 -type f 2>/dev/null
 	
 	printf "
 	
