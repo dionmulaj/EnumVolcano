@@ -85,7 +85,6 @@ ${BORANGE}|/\/\/\/\/\/\DEFAULT ENUMERATION\/\/\/\/\/\|${NC}
 
 ${ORANGE}12) Privilege Escalation Default Enumeration${NC}
 "
-${BRED}99) EXIT${NC}
 
 echo "
 
